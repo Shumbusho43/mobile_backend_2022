@@ -1,0 +1,272 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Domentation of voting system mobile 2022",
+        "version": "1.0.0",
+        "title": "Voting system mobile 2022 APIs",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "davidshumbusho10@gmail.com",
+            "name": "David Shumbusho"
+        },
+        "licence": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "user operations"
+        },
+        {
+            "name": "Candidate",
+            "description": "Candidate operations"
+        },
+        {
+            "name": "Voting",
+            "description": "Voting operations"
+        }
+    ],
+    "paths": {
+        "/api/v1/user/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register user",
+                "description": "Register user",
+                "operationId": "registeruser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "user object",
+                        "required": true,
+                        "properties": {
+                            "names": {
+                                "type": "string",
+                                "example": "Shumbusho David"
+                            },
+                            "phoneNumber": {
+                                "type": "string",
+                                "example": "0788781096"
+                            },
+                            "email": {
+                                "type": "string",
+                                "example": "davidshumbusho10@gmail.com"
+                            },
+                            "password": {
+                                "type": "string"
+                            },
+                            "reEnterPassword": {
+                                "type": "string",
+                                "example": "string"
+                            },
+                            "nationalID": {
+                                "type": "string",
+                                "example": "1199999999999999"
+                            },
+                            "address": {
+                                "type": "string",
+                                "example": "Kigali"
+                            },
+                            "role": {
+                                "type": "string",
+                                "example": "admin"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login user",
+                "description": "Login user",
+                "operationId": "loginUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User object",
+                        "required": true,
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "example": "davidshumbusho10@gmail.com"
+                            },
+                            "password": {
+                                "type": "string",
+                                "example": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/v1/candidate/register": {
+            "post": {
+                "tags": [
+                    "Candidate"
+                ],
+                "summary": "Register Candidate",
+                "description": "Register Candidate",
+                "operationId": "registerCandidate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Candidate object",
+                        "required": true,
+                        "properties": {
+                            "names": {
+                                "type": "string",
+                                "example": "Shumbusho David"
+                            },
+                            "profilePicture": {
+                                "type": "string",
+                                "example": "testing.jpg"
+                            },
+                            "nationalID": {
+                                "type": "string",
+                                "example": "1199999999999999"
+                            },
+                            "gender": {
+                                "type": "string",
+                                "example": "M"
+                            },
+                            "missionStatement": {
+                                "type": "string",
+                                "example": "testing candidate registration."
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/v1/candidate": {
+            "get": {
+                "tags": [
+                    "Candidate"
+                ],
+                "summary": "Get all Candidates",
+                "description": "Get all Candidates",
+                "operationId": "getAllCandidates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/v1/candidate/totalVotes": {
+            "get": {
+                "tags": [
+                    "Candidate"
+                ],
+                "summary": "Get total votes for a candidate",
+                "description": "Get total votes for a candidate",
+                "operationId": "Get total votes for a candidate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/v1/voting/{candidateId}": {
+            "post": {
+                "tags": [
+                    "Voting"
+                ],
+                "summary": "voting for a candidate",
+                "description": "voting for a candidate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "candidateId",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    }
+}
