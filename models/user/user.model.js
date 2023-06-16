@@ -122,4 +122,4 @@ userSchema.methods.comparePassword = async function (password) {
 }
 
 module.exports.validateUser = validateUser;
-module.exports.User = mongoose.model('User', userSchema);
+module.exports.User = mongoose.model('UserModel', userSchema);
